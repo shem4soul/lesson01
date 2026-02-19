@@ -3,28 +3,28 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class UsersService {
   private users = [
-    { id: 1, name: 'John Doe', email: 'johndoe@gmail.com', role: 'admin' },
+    { id: 1, name: 'John Doe', email: 'johndoe@gmail.com', role: 'ADMIN' },
     {
       id: 2,
       name: 'Victoria smiath',
       email: 'victory@hotmail.com',
-      role: 'intern',
+      role: 'INTERN',
     },
     {
       id: 3,
       name: 'Michael Johnson',
       email: 'mike@fastermail.com',
-      role: 'Engineer',
+      role: 'ENGINEER',
     },
     {
       id: 4,
       name: 'Emily Davis',
       email: 'emily@gmail.com',
-      role: 'admin',
+      role: 'ADMIN',
     },
   ];
 
-  findAll(role?: 'admin' | 'intern' | 'Engineer') {
+  findAll(role?: 'ADMIN' | 'INTERN' | 'ENGINEER') {
     if (role) {
       return this.users.filter((user) => user.role === role);
     }
@@ -41,7 +41,7 @@ export class UsersService {
   create(user: {
     name: string;
     email: string;
-    role: 'INTERN' | 'ENGINNER' | 'ADMIN';
+    role: 'INTERN' | 'ENGINEER' | 'ADMIN';
   }) {
     const usersByHighestId = [...this.users].sort((a, b) => b.id - a.id);
     const highestId = usersByHighestId[0]?.id ?? 0;
@@ -55,7 +55,7 @@ export class UsersService {
     updatedUser: {
       name?: string;
       email?: string;
-      role?: 'INTERN' | 'ENGINNER' | 'ADMIN';
+      role?: 'INTERN' | 'ENGINEER' | 'ADMIN';
     },
   ) {
     this.users = this.users.map((user) => {
